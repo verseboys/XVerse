@@ -26,17 +26,22 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
-
-
     //动态json 动画加载依赖
     compile 'com.airbnb.android:lottie:1.0.1'
     compile 'com.squareup.okhttp3:okhttp:3.5.0'
     //更新模块
-   compile 'com.qianwen:update-app:3.3.8'
+    compile 'com.qianwen:update-app:3.3.8'
     compile 'com.qianwen:okhttp-utils:3.8.0'
     compile 'com.lzy.net:okgo:3.0.4'
-   // compile project(':update-app')
+    // compile project(':update-app')
 
+
+    //低安卓版本时的特效依赖版本
+    //compile 'com.android.support:appcompat-v7:23.3.0'
+
+    //组件绑定框架
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
 
 }

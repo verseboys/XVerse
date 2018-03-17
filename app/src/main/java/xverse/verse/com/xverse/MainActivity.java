@@ -22,8 +22,12 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import okhttp3.OkHttpClient;
 import xverse.verse.com.xverse.app.App;
+import xverse.verse.com.xverse.common.BaseActivity;
 import xverse.verse.com.xverse.http.OkGoUpdateHttpUtil;
 import xverse.verse.com.xverse.http.UpdateAppHttpUtil;
 import xverse.verse.com.xverse.utils.CProgressDialogUtils;
@@ -31,7 +35,7 @@ import xverse.verse.com.xverse.utils.CProgressDialogUtils;
 /**
  *
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private OkHttpClient client;
     private String mUpdateUrl = "https://raw.githubusercontent.com/verseboys/AppUpdate/master/json/json.txt";
@@ -43,63 +47,88 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private Button button1,button2,button3,button4,button5;
+   // private
+   @BindView(R.id.am_button0)
+   Button button0;
+    @BindView(R.id.am_button1)
+    Button        button1;
+    @BindView(R.id.am_button4)
+    Button     button4;
+    @BindView(R.id.am_button5)
+    Button      button5;
+    @BindView(R.id.am_button6)
+    Button      button6;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext=this;
         setContentView(R.layout.activity_main);
-
-        button1=(Button)findViewById(R.id.button1);
-        button2=(Button)findViewById(R.id.button2);
-        button3=(Button)findViewById(R.id.button3);
-        button4=(Button)findViewById(R.id.button4);
-        button5=(Button)findViewById(R.id.button5);
+        ButterKnife.bind(this);
 
 
 
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                Intent intent=new Intent(MainActivity.this,SimpleActivity.class);
+
+
+
+
+
+    }
+
+    @Override
+    public void setContentView(int layoutResID) {
+        super.setContentView(layoutResID);
+    }
+
+    @Override
+    @OnClick({R.id.am_button0,R.id.am_button1,R.id.am_button4,R.id.am_button5,R.id.am_button6})
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.am_button0 :
+                Intent intent=new Intent(MainActivity.this,DynamicGraphActivity.class);
                 startActivity(intent);
-            }
-        });
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent=new Intent(MainActivity.this,ClickActivity.class);
+                break;
+            case R.id.am_button1 :
+                intent=new Intent(MainActivity.this,SpecialEffectsActivity.class);
                 startActivity(intent);
-            }
-        });
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent=new Intent(MainActivity.this,NetworkActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        button4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                break;
+            case R.id.am_button4 :
                 updateApp(view);
-
-            }
-        });
-        button5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                break;
+            case R.id.am_button5 :
                 updateDiy(view);
+                break;
+            case R.id.am_button6 :
+                updateDiy(view);
+                break;
 
-            }
-        });
+        }
     }
 
 
+
+
+
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void bindEvent() {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void processClick(View view) {
+
+    }
 
 
     /**

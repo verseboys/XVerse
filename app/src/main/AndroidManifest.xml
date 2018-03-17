@@ -2,10 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="xverse.verse.com.xverse">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
 
     <application
         android:name=".app.App"
@@ -25,11 +23,21 @@
 
         <meta-data
             android:name="UPDATE_APP_KEY"
-            android:value="ab55ce55Ac4bcP408cPb8c1Aaeac179c5f6f"/>
+            android:value="ab55ce55Ac4bcP408cPb8c1Aaeac179c5f6f" />
+
         <activity android:name=".ClickActivity" />
         <activity android:name=".NetworkActivity" />
         <activity android:name=".SimpleActivity" />
+        <activity
+            android:name=".DynamicGraphActivity"
+            android:theme="@style/AppThemeone">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SpecialEffectsActivity"></activity>
     </application>
 
 </manifest>

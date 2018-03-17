@@ -15,25 +15,18 @@
     <Button
         android:layout_width="200dip"
         android:layout_height="40dip"
-        android:text="最简单的例子"
+        android:text="动态图加载"
         android:background="@color/colorPrimary"
-        android:id="@+id/button1"/>
+        android:id="@+id/am_button0"/>
 
     <Button
         android:layout_width="200dip"
         android:layout_height="40dip"
-        android:text="通过代码实现动画和回调等"
+        android:text="点击特效"
         android:background="@color/colorPrimary"
-        android:id="@+id/button2"
+        android:id="@+id/am_button1"
         android:layout_marginTop="20dip"/>
 
-    <Button
-        android:layout_width="200dip"
-        android:layout_height="40dip"
-        android:text="从网络上获取动画效果"
-        android:background="@color/colorPrimary"
-        android:id="@+id/button3"
-        android:layout_marginTop="20dip"/>
 
 
 
@@ -42,7 +35,7 @@
         android:layout_height="40dip"
         android:text="更新模块"
         android:background="@color/colorPrimary"
-        android:id="@+id/button4"
+        android:id="@+id/am_button4"
         android:layout_marginTop="20dip"/>
 
 
@@ -51,7 +44,7 @@
         android:layout_height="40dip"
         android:text="自定义接口更新模块"
         android:background="@color/colorPrimary"
-        android:id="@+id/button5"
+        android:id="@+id/am_button5"
         android:layout_marginTop="20dip"/>
 
 
@@ -61,7 +54,7 @@
         android:layout_height="40dip"
         android:text="UI模块"
         android:background="@color/colorPrimary"
-        android:id="@+id/button6"
+        android:id="@+id/am_button6"
         android:layout_marginTop="20dip"/>
 
 
