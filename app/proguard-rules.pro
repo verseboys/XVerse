@@ -21,6 +21,11 @@
 
 #-renamesourcefileattribute SourceFile
 
+
+
+#不优化输入的类文件，若使用则日志不会被清除
+#-dontoptimize
+
 # 删除系统日志语句
 -assumenosideeffects class android.util.Log {
      public static boolean isLoggable(java.lang.String, int);
