@@ -59,4 +59,23 @@
 
 
 
+    <Button
+        android:layout_width="200dip"
+        android:layout_height="40dip"
+        android:text="广播模块"
+        android:background="@color/colorPrimary"
+        android:id="@+id/am_button7"
+        android:layout_marginTop="20dip"/>
+
+
+    <Button
+        android:layout_width="200dip"
+        android:layout_height="40dip"
+        android:text="使用EventBus或者RxBus等事件总线机制"
+        android:background="@color/colorPrimary"
+        android:id="@+id/am_button8"
+        android:layout_marginTop="20dip"/>
+
+
+
 </LinearLayout>

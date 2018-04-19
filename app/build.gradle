@@ -7,7 +7,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
-        versionName "1.0"
+        versionName "0.1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -16,6 +16,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
+    lintOptions {
+        abortOnError false
+    }
+
 }
 
 dependencies {
@@ -35,13 +41,26 @@ dependencies {
     compile 'com.lzy.net:okgo:3.0.4'
     // compile project(':update-app')
 
-
     //低安卓版本时的特效依赖版本
     //compile 'com.android.support:appcompat-v7:23.3.0'
 
     //组件绑定框架
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+
+    //ui框架
+    // QQ UI
+    compile 'com.qmuiteam:qmui:1.0.7'
+    compile 'com.qmuiteam:arch:0.0.1'
+    // 注解开发
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    //leak 内存泄漏
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+
+    compile 'org.greenrobot:eventbus:3.0.0'
 
 
 }

@@ -5,6 +5,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <!-- 声明监听系统开机广播权限 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <application
         android:name=".app.App"
         android:allowBackup="true"
@@ -37,7 +40,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SpecialEffectsActivity"></activity>
+        <activity android:name=".SpecialEffectsActivity" />
+        <activity
+            android:name=".QmuiActivity"
+            android:theme="@style/AppThemeQmui" />
+        <activity android:name=".broadcast.BroadcastReceiverActivity" />
+
+        <receiver android:name=".broadcast.BootCompleteReceiver">
+            <intent-filter>
+
+                <!-- 接收广播类型筛选 -->
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".broadcast.MyBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.example.broadcasttest.MY_BROADCAST" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".eventbus.EventbusActivity"></activity>
+        <activity android:name=".eventbus.SecondActivity"/>
     </application>
 
 </manifest>

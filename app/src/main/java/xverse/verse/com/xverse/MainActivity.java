@@ -27,7 +27,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.OkHttpClient;
 import xverse.verse.com.xverse.app.App;
+import xverse.verse.com.xverse.broadcast.BroadcastReceiverActivity;
 import xverse.verse.com.xverse.common.BaseActivity;
+import xverse.verse.com.xverse.eventbus.EventbusActivity;
 import xverse.verse.com.xverse.http.OkGoUpdateHttpUtil;
 import xverse.verse.com.xverse.http.UpdateAppHttpUtil;
 import xverse.verse.com.xverse.utils.CProgressDialogUtils;
@@ -38,9 +40,9 @@ import xverse.verse.com.xverse.utils.CProgressDialogUtils;
 public class MainActivity extends BaseActivity {
 
     private OkHttpClient client;
-    private String mUpdateUrl = "https://raw.githubusercontent.com/verseboys/AppUpdate/master/json/json.txt";
+   // private String mUpdateUrl = "https://raw.githubusercontent.com/verseboys/AppUpdate/master/json/json.txt";
 
-    private String mUpdateUrl1= "http://localhost:8080/mobileVersionManger/com/mobile/updateVersion";
+    private String mUpdateUrl1= "http://119.146.189.82:8089/mobileVersionManger/com/mobile/updateVersion.html?";
 
     private Context mContext;
 
@@ -81,7 +83,8 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    @OnClick({R.id.am_button0,R.id.am_button1,R.id.am_button4,R.id.am_button5,R.id.am_button6})
+    @OnClick({R.id.am_button0,R.id.am_button1,R.id.am_button4,R.id.am_button5,
+            R.id.am_button6,R.id.am_button7,R.id.am_button8})
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.am_button0 :
@@ -99,7 +102,19 @@ public class MainActivity extends BaseActivity {
                 updateDiy(view);
                 break;
             case R.id.am_button6 :
-                updateDiy(view);
+                intent=new Intent(MainActivity.this,QmuiActivity.class);
+                startActivity(intent);
+
+                break;
+            case R.id.am_button7 :
+                intent=new Intent(MainActivity.this,BroadcastReceiverActivity.class);
+                startActivity(intent);
+
+                break;
+            case R.id.am_button8:
+                intent=new Intent(MainActivity.this,EventbusActivity.class);
+                startActivity(intent);
+
                 break;
 
         }
@@ -142,7 +157,7 @@ public class MainActivity extends BaseActivity {
                 //当前Activity
                 .setActivity(this)
                 //更新地址
-                .setUpdateUrl(mUpdateUrl)
+                .setUpdateUrl(mUpdateUrl1)
                 //实现httpManager接口的对象
                 .setHttpManager(new UpdateAppHttpUtil())
                 .build()
@@ -162,10 +177,11 @@ public class MainActivity extends BaseActivity {
 
         Map<String, String> params = new HashMap<String, String>();
 
-        params.put("appKey", "ab55ce55Ac4bcP408cPb8c1Aaeac179c5f6f");
-        params.put("appVersion", AppUpdateUtils.getVersionName(this));
-        params.put("key1", "value2");
-        params.put("key2", "value3");
+//        params.put("appKey", "ab55ce55Ac4bcP408cPb8c1Aaeac179c5f6f");
+//        params.put("appVersion", AppUpdateUtils.getVersionName(this));
+        //多参数
+//        params.put("key1", "value2");
+//        params.put("key2", "value3");
 
         Log.e("当前版本号", AppUpdateUtils.getVersionName(this)+"");
 
@@ -187,7 +203,7 @@ public class MainActivity extends BaseActivity {
                 //是否忽略版本
 //                .showIgnoreVersion()
                 //添加自定义参数，默认version=1.0.0（app的versionName）；apkKey=唯一表示（在AndroidManifest.xml配置）
-                .setParams(params)
+               // .setParams(params)
                 //设置点击升级后，消失对话框，默认点击升级后，对话框显示下载进度
                 .hideDialogOnDownloading(false)
                 //设置头部，不设置显示默认的图片，设置图片后自动识别主色调，然后为按钮，进度条设置颜色
@@ -213,6 +229,10 @@ public class MainActivity extends BaseActivity {
                         UpdateAppBean updateAppBean = new UpdateAppBean();
                         try {
                             JSONObject jsonObject = new JSONObject(json);
+
+                            String update_logString=jsonObject.optString("update_log");
+
+                            String  update_logStringTo = update_logString.replace("\\", "\r\n");
                             updateAppBean
                                     //（必须）是否更新Yes,No
                                     .setUpdate(jsonObject.optString("update"))
@@ -226,8 +246,8 @@ public class MainActivity extends BaseActivity {
 //                                    .setUpdateLog(jsonObject.optString("update_log"))
                                     //测试内容过度
 //                                    .setUpdateLog("测试")
-                                    .setUpdateLog("1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16")
-//                                    .setUpdateLog("今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说\r\n")
+                                   .setUpdateLog(update_logStringTo)
+    //                                .setUpdateLog("今天我们来聊一聊程序员枯燥的编程生活，相对于其他行\r\n业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说相对于其他行业来说今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说\r\n")
                                     //大小，不设置不显示大小，可以不设置
                                     .setTargetSize(jsonObject.optString("target_size"))
                                     //是否强制更新，可以不设置
