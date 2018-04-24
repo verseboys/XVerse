@@ -59,8 +59,10 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".eventbus.EventbusActivity"></activity>
-        <activity android:name=".eventbus.SecondActivity"/>
+        <activity android:name=".eventbus.EventbusActivity" />
+        <activity android:name=".eventbus.SecondActivity" />
+        <activity android:name=".asyn.AsynchttpclientActivity"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

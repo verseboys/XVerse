@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="rippelColor">#df9c9c</color>
+
+    <color name="white">#fffefe</color>
 </resources>

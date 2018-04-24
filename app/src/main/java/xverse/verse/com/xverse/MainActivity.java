@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +26,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.OkHttpClient;
 import xverse.verse.com.xverse.app.App;
+import xverse.verse.com.xverse.asyn.AsynchttpclientActivity;
 import xverse.verse.com.xverse.broadcast.BroadcastReceiverActivity;
 import xverse.verse.com.xverse.common.BaseActivity;
 import xverse.verse.com.xverse.eventbus.EventbusActivity;
@@ -84,7 +84,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     @OnClick({R.id.am_button0,R.id.am_button1,R.id.am_button4,R.id.am_button5,
-            R.id.am_button6,R.id.am_button7,R.id.am_button8})
+            R.id.am_button6,R.id.am_button7,R.id.am_button8,R.id.am_button9})
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.am_button0 :
@@ -113,6 +113,12 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.am_button8:
                 intent=new Intent(MainActivity.this,EventbusActivity.class);
+                startActivity(intent);
+
+                break;
+
+            case R.id.am_button9:
+                intent=new Intent(MainActivity.this,AsynchttpclientActivity.class);
                 startActivity(intent);
 
                 break;

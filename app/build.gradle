@@ -63,4 +63,9 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.0.0'
 
 
+    //异步请求
+    compile 'com.loopj.android:android-async-http:1.4.9'
+
+
+
 }
