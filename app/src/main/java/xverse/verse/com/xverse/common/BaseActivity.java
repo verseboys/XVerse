@@ -17,11 +17,18 @@ import android.view.View;
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
     protected Context mContext;
+    /**
+    *输出日志用
+    */
+    public String TAG;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this;
+        
+        TAG=getComponentName().getShortClassName();
+            
         if (isRegisterEvent()) {
             //BusManager.getBus().register(this);
         }
